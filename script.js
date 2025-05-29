@@ -14,6 +14,22 @@ function getcomputerchoice() {
   else return "scissor";
 }
 
+function showResult(humanScore, computerScore) {
+  const div = document.createElement("div");
+  div.textContent = `Your Score: ${humanScore} and Computer Score: ${computerScore}`;
+  let winner=document.createElement("div");
+  if(humanscore === 5) {
+    winner.textContent="You Won !!";
+  }
+  else if(computerScore==5)
+  {
+    winner.textContent="You Lost!!";
+  }
+  document.querySelector("#result").appendChild(div);
+  document.querySelector('#result').appendChild(winner); 
+}
+
+
 function playRound(humanselection, computerselection) {
   if (humanselection === computerselection) {
     console.log("It's a Tie!");
@@ -29,13 +45,14 @@ function playRound(humanselection, computerselection) {
     computerscore++;
   }
 
-  console.log(`Score: You ${humanscore} - ${computerscore} Computer`);
+  // console.log(`Score: You ${humanscore} - ${computerscore} Computer`);
+  showResult(humanscore,computerscore);
 
-  if (humanscore === 5 || computerscore === 5) {
+  if(humanscore === 5 || computerscore === 5) {
     console.log("Game Over");
-    if (humanscore > computerscore) {
+    if(humanscore > computerscore) {
       console.log("You won the game!!");
-    } else {
+    } else{
       console.log("You lost the game!!");
     }
   }
